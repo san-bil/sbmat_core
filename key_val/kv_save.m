@@ -1,4 +1,4 @@
-function dict=parfor_kv_save(mat_file,varargin)
+function dict=kv_save(mat_file,varargin)
 
 % in: variables that you want to be stored in an associative-array/map/dictionary
 %
@@ -20,4 +20,4 @@ end
 
 save(mat_file,'dict');
 
-end
+

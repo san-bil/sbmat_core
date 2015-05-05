@@ -1,4 +1,4 @@
-function [s] = kv_to_str( kv_map )
+function [out] = kv_to_str( kv_map,delim )
 
 
 % in: a 2-column cell array representing a dictionary (first column==string keys, second column==values), 
@@ -10,6 +10,10 @@ function [s] = kv_to_str( kv_map )
 %
 % tags: #map #dictionary #associativearray #associative #keyvalue
 
+if(~exist('delim','var'))
+    delim='_';
+end
+
 acc=[];
 
 for i = 1:size(kv_map,1)
@@ -17,13 +21,13 @@ for i = 1:size(kv_map,1)
     val = kv_map{i,2};
    
         if(ischar(val))
-            acc = [acc key val];
+            acc = [acc key delim val delim];
         else
-            acc = [acc key num2str(val)];
+            acc = [acc key delim num2str(val) delim];
         end
 end
 
-s=acc;
+out=acc(1:end-1);
 
-end
+
 
