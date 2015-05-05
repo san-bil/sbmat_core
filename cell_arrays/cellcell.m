@@ -1,4 +1,8 @@
-function out = cellcell(outer_dims, inner_dims)
+function out = cellcell(outer_dims, inner_dims,val)
+
+if(~exist('val','var'))
+    val=[];
+end
 
 out = cell(outer_dims);
 
@@ -6,6 +10,8 @@ total_size = prod(outer_dims);
 
 for i = 1:total_size
 
-    out{i} = cell(inner_dims);
+    tmp = cell(inner_dims);
+    tmp{1} = val;
+    out{i} = tmp;
 
 end
