@@ -57,7 +57,7 @@ classdef Templater
             in_fid = fopen(input_template_file);
 
             input_lines = index_cellarray(textscan(in_fid,'%s','Delimiter','&'),1);
-            
+            fclose(in_fid);
             templated_lines = cell(size(input_lines));
             for i = 1:size(input_lines,1)
                 
