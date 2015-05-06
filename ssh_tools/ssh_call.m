@@ -1,7 +1,7 @@
-function out = ssh_call(cmd,host,key)
+function [res,out] = ssh_call(cmd,host,ssh_key)
 
-cmd_bits = {'ssh -i ',key,host,['"' cmd '"']};
+cmd_bits = {ld_lib_path_fix,'ssh -i ',ssh_key,host,['"' cmd '"']};
 
-cmd = concat_cell_string_array(cmd_bits,' ');
+cmd = concat_cell_string_array(cmd_bits,' ',1);
 
-[~,out] = system(cmd);
+[res,out] = system(cmd);
