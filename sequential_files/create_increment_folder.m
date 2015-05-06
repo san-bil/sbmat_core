@@ -36,6 +36,6 @@ function [ new_folder_path ] = create_increment_folder( folder_prefix, parent_fo
         
     new_folder_path = [parent_folder,folder_prefix,int2str(highest_folder+1)];
     
-    mkdir(new_folder_path);
+    my_mkdir(new_folder_path);
 end
 
