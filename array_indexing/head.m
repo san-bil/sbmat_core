@@ -1,4 +1,4 @@
-function [ out ] = head( arr,num_el )
+function [ out ] = head( arr,idxs )
 
 % in: numerical array; number of head elements
 
@@ -9,13 +9,9 @@ function [ out ] = head( arr,num_el )
 
 % tags: #array-indexing 
 
-if(~exist('num_el','var') || isempty(num_el))
-    
-    num_el=1;
+if(~exist('idxs','var')),idxs=1;end
 
-end
+out = arr(1:idxs);
 
-out = arr(1:num_el);
 
-end
 
