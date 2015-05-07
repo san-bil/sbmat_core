@@ -27,5 +27,5 @@ else
     cmd = concat_cell_string_array({ld_lib_path_fix,'rsync','-auzh',rsync_args_string,remote_rsync_args,src,dst},' ',1);
 
 end
-
+disp(cmd);
 system(cmd);
