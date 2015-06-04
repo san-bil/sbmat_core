@@ -13,3 +13,4 @@ save(save_and_rsync_tmpfile_path,save_and_rsync_var_map_keys{:},'-v7.3');
 
 save_and_rsync_direction='push';
 rsync(save_and_rsync_tmpfile_path, save_and_rsync_data_path, {},save_and_rsync_host,save_and_rsync_ssh_key, save_and_rsync_direction)
+delete(save_and_rsync_tmpfile_path)
