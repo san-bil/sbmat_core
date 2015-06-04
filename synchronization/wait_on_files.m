@@ -15,7 +15,8 @@ if(~exist('holding_time', 'var'))
 end
 
 
-fprintf('%s waiting on: %s\n\t%s\n',where_am_i,concat_cell_string_array(files_list));
+fprintf('%s waiting on: \n',callerfunc());
+disp_cellstr( cellfun_uo0(@(tmp)['       ' tmp],files_list));
 
 flag = 1;
 
@@ -43,6 +44,4 @@ while(1)
     
 end
 
-
-end
-
+fprintf('%s has finished waiting!\n',callerfunc());
