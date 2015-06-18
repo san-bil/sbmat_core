@@ -8,9 +8,12 @@ function [ output_args ] = index_cellarray(x, varargin )
 % elements in cell array 'x'
 
 % tags: #array-indexing 
+if(varargin{1}<1)
 
-output_args = x{varargin{:}};
-
+    output_args = x{end+varargin{:}};
+else
+    
+    output_args = x{varargin{:}};
 
 end
 
