@@ -1,6 +1,6 @@
 function write_cell_of_strings_to_file(filepath,string_arr)
-
-fid=fopen(filepath,'wt');
+touch(filepath);
+fid=fopen(filepath,'a');
 
 csvFun = @(str)sprintf('%s\n,',str);
 
