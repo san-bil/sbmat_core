@@ -1,4 +1,4 @@
-function out = cellfun_uo0(f_handle,cell_array)
+function out = cellfun_uo0(f_handle,varargin)
 
 
-out = cellfun(f_handle,cell_array,'UniformOutput',0);
+out = cellfun(f_handle,varargin{:},'UniformOutput',0);
