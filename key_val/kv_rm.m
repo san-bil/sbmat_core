@@ -1,4 +1,4 @@
-function [ output_args ] = kv_rm( key,kv_map)
+function [ output_args,val ] = kv_rm( key,kv_map)
 
 
 % in: a string key, a 2-column cell array representing a dictionary (first column==string keys, second column==values)
@@ -9,6 +9,7 @@ function [ output_args ] = kv_rm( key,kv_map)
 %
 % tags: #map #dictionary #associativearray #associative #keyvalue
 
+val =kv_get(key,kv_map);
 
 my_flag = -1;
 for i=1:size(kv_map,1)    
