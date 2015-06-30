@@ -1,18 +1,6 @@
-function new_map = kv_val_op(map,operator)
+function new_map = kv_val_op(key, map,operator)
 
-keys=kv_getkeys(map);
-
-new_map = {};
-for i =1:length(keys)
-
-    key = keys{i};
-    val = kv_get(key,map);
+val = kv_get(key,map);
+op_val = operator(val);    
+new_map = kv_set(key,op_val,map);
     
-    if(iscell(val))
-        val = cell2mat(val);
-    end
-    
-    op_val = operator(val);    
-    new_map = kv_set(key,op_val,new_map);
-    
-end
