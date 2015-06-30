@@ -1,4 +1,7 @@
-function out=callerfunc()
+function out=callerfunc(upsteps)
 
+if(~exist('upsteps','var'))
+    upsteps = 3;
+end
 mystack=dbstack;
-out = mystack(3).name;
+out = mystack(upsteps).name;
