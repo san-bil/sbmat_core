@@ -1,4 +1,4 @@
-function chmod(filepath, permissions,host,ssh_key)
+function chmod(filepath, permissions,host,ssh_key,varargin)
 
 if(~exist('permissions','var')),permissions='755';end;
 if(~exist('host','var')),host='localhost';end;

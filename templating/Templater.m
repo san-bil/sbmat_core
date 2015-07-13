@@ -8,7 +8,7 @@ classdef Templater
     methods(Static)
         
         
-        function fill(input_template_file,dictionary, output_file, line_ending)
+        function output_file = fill(input_template_file,dictionary, output_file, line_ending)
             
             % in: - the path to a template text file, where each field to be filled is preceded by a dollar sign
             %     - a dictionary mapping string fields to string values
