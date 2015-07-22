@@ -1,4 +1,4 @@
-function write_cell_of_strings_to_file(filepath,string_arr)
+function out=write_cell_of_strings_to_file(filepath,string_arr)
 touch(filepath);
 fid=fopen(filepath,'a');
 
@@ -11,3 +11,4 @@ xchar = strcat(xchar{:});
 xchar = strcat(xchar(1:end-1),'\n');
 fprintf(fid,strrep(xchar,',',''));
 fclose(fid);
+out=1;
