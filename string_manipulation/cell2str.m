@@ -1,3 +1,7 @@
 function out=cell2str(in)
 
-out = in{1};
+if(iscell(in))
+    out = in{1};
+else
+    out=in;
+end
