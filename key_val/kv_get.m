@@ -30,6 +30,9 @@ end
 if(my_flag==0)
     if(exist('default_val','var'))
         val=default_val;
+        if(ischar(key))
+            print_log_message(2,1,'Using default val for %s\n', key);
+        end
         idx=-1;
     else
         error('kv_get() - Key not found!');
