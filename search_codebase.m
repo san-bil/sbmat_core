@@ -1,5 +1,10 @@
 function search_codebase(search_root, search_term, linewise)
 
+if(nargin==0)
+    fprintf('\n\tUsage: search_codebase(search_root, search_term, linewise)\n\n')
+    return
+end
+
 if(~exist('linewise','var'));linewise=0;end;
 
 search_term = ['''*' search_term '*'''];
