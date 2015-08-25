@@ -13,10 +13,10 @@ function kv_print( input_args )
 
 for i = 1:size(input_args,1)
     
-    if(strcmp(class(input_args{i,2}),'double'))
-       disp([input_args{i,1},' = ',num2str(input_args{i,2})])
+    if(isnumeric(input_args{i,2}))
+       disp([input_args{i,1},' = ',vec_2_csv(force_fat_matrix(input_args{i,2}))])
     else
-        disp([input_args{i,1},' = ',(input_args{i,2})])
+        disp([input_args{i,1},' = ',force_fat_matrix(input_args{i,2})])
     end
     
 end

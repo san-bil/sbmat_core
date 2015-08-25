@@ -33,7 +33,7 @@ for i = 1:size(kv_map,1)
         if(ischar(option_value))
             option_string = [option_key,sprintf('%s = ',repmat(' ',1,key_length_diff)),option_value];
         elseif(isnumeric(option_value))
-            option_string = [option_key,sprintf('%s = ',repmat(' ',1,key_length_diff)),num2str(option_value)];
+            option_string = [option_key,sprintf('%s = ',repmat(' ',1,key_length_diff)),num2str(force_fat_matrix(option_value))];
         end
         fprintf(kv_map_file_handle,'%s\n',option_string);
     end
