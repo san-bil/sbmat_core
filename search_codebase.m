@@ -1,8 +1,12 @@
-function search_codebase(search_root, search_term, linewise)
+function search_codebase(search_term, search_root, linewise)
 
 if(nargin==0)
     fprintf('\n\tUsage: search_codebase(search_root, search_term, linewise)\n\n')
     return
+end
+
+if(nargin==1)
+    search_root = pwd;
 end
 
 if(~exist('linewise','var'));linewise=0;end;
