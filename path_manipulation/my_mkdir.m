@@ -1,4 +1,4 @@
-function my_mkdir(dir_path,host,ssh_key)
+function dir_path = my_mkdir(dir_path,host,ssh_key)
 
 % in: a directory path
 %
