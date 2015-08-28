@@ -1,7 +1,7 @@
 function search_codebase(search_term, search_root, linewise)
 
 if(nargin==0)
-    fprintf('\n\tUsage: search_codebase(search_root, search_term, linewise)\n\n')
+    fprintf('\n\tUsage: search_codebase(search_term, search_root, linewise)\n\n')
     return
 end
 
@@ -11,14 +11,13 @@ end
 
 if(~exist('linewise','var'));linewise=0;end;
 
-search_term = ['''*' search_term '*'''];
+
 
 if(~linewise)
-
+    search_term = ['''*' search_term '*'''];
     cmd = build_string_args({'find',search_root,'-iwholename',search_term});
 
 else
-
     cmd = build_string_args({'grep','-R',search_term,search_root});
     
 end
