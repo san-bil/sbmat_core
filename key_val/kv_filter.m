@@ -3,6 +3,10 @@ function out = kv_filter(map_to_filter,keys,include_or_exclude)
 in_map = {};
 ex_map = {};
 
+if(~exist('include_or_exclude','var'))
+    include_or_exclude='include';
+end
+
 for i = 1:size(map_to_filter,1)
     
     if(ismember(map_to_filter{i,1},keys))
