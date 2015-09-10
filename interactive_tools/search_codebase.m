@@ -1,4 +1,4 @@
-function search_codebase(search_term, search_root, linewise)
+function lines= search_codebase(search_term, search_root, linewise)
 
 if(nargin==0)
     fprintf('\n\tUsage: search_codebase(search_term, search_root, linewise)\n\n')
@@ -22,4 +22,6 @@ else
     
 end
 
-system_e(cmd);
+[~,stdout]=system_e(cmd);
+
+lines = parse_stdout(stdout)';
