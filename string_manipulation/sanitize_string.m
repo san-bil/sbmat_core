@@ -1,6 +1,10 @@
-function [ y ] = sanitize_string( x )
+function [ y ] = sanitize_string( x, sanitizer )
 
-y=strrep(lower(x),' ','_');
+if(~exist('sanitizer','var'))
+    sanitizer='_';
+end
+
+y=strrep(lower(x),' ',sanitizer);
 
 end
 
