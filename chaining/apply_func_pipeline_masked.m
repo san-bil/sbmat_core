@@ -1,6 +1,6 @@
-function [tmp]=apply_func_pipeline_masked(input, named_func_pipeline, mask, invert_mask) 
+function [tmp2]=apply_func_pipeline_masked(input, named_func_pipeline, mask, invert_mask) 
 
-tmp = input;
+tmp2 = input;
 
 keys = kv_getkeys(named_func_pipeline);
 
@@ -9,7 +9,7 @@ for i = 1:length(keys)
 
     if(xor(invert_mask, ismember(pipeline_stage_name,mask)))
         func_handle = kv_get(pipeline_stage_name, named_func_pipeline);
-        tmp=func_handle(tmp);
+        tmp2=func_handle(tmp2);
     end
 end
 
