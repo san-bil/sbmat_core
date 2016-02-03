@@ -80,6 +80,39 @@ classdef Templater
             fclose(out_fid);
             
         end
+        
+        function output_file = fill2(input_template_file,dictionary, output_file, line_ending)
+            
+            
+            assert(length(kv_getkeys(dictionary))==length(my_unique(kv_getkeys(dictionary))));
+            key_list = kv_getkeys(dictionary);
+            
+            in_fid = fopen(input_template_file);
+
+            input_lines = index_cellarray(textscan(in_fid,'%s','delimiter','\n','whitespace',''),1);
+            fclose(in_fid);
+            templated_lines = cell(size(input_lines));
+            for i = 1:size(input_lines,1)
+                
+                templated_line=input_lines{i};
+                
+                for j = 1:length(key_list)
+                    key = key_list{j};
+                    val = kv_get(key,dictionary);
+                    templated_line = strrep(templated_line,['$' key],str(val));
+                end
+                
+                templated_lines{i} = templated_line;
+            end
+
+            out_fid = fopen(output_file, 'w');
+            for k = 1:length(input_lines)
+                fprintf(out_fid, ['%s' line_ending], templated_lines{k});
+            end
+            fprintf(out_fid, ['%s' line_ending], '');
+            fclose(out_fid);
+            
+        end
     end
     
 end
