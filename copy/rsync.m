@@ -28,4 +28,5 @@ else
 
 end
 disp(cmd);
-system(cmd);
+[~,msg]=system(cmd);
+tmp=1;
