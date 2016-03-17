@@ -20,4 +20,4 @@ opts_str = build_cmd(find_opts);
 
 cmd = build_cmd({'find',follow_links_str,folder,opts_str});
 [~,stdout] = system(cmd);
-out = filter_empty_strings(strsplit(stdout,newline));
+out = filter_empty_strings(strsplit(stdout,newline))';
