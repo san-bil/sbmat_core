@@ -1,4 +1,4 @@
-function [ new_folder_path ] = create_increment_folder( folder_prefix, parent_folder )
+function [ new_folder_path,new_folder_idx ] = create_increment_folder( folder_prefix, parent_folder )
 
 % in: file prefix string;
 %     folder in which to create file
@@ -33,8 +33,8 @@ function [ new_folder_path ] = create_increment_folder( folder_prefix, parent_fo
     else
         highest_folder = 0;
     end
-        
-    new_folder_path = [parent_folder,folder_prefix,int2str(highest_folder+1)];
+	new_folder_idx=highest_folder+1;
+    new_folder_path = [parent_folder,folder_prefix,int2str(new_folder_idx)];
     
     my_mkdir(new_folder_path);
 end
