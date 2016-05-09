@@ -1,6 +1,6 @@
 function res = is_ssh_host_responding2(host_url)
 
-string_args = {'ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 ',host_url,'"echo u_up?  ;echo ENDSSH"'};
+string_args = {'ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 ',host_url,'"echo u_up  ;echo ENDSSH"'};
 cmd =  [ld_lib_path_fix build_string_args(string_args)];
 [~,stdout] =system(cmd);
 stdout_lines = filter_empty_strings( strsplit(stdout,'\n') );
