@@ -81,8 +81,9 @@ classdef Templater
             
         end
         
-        function output_file = fill2(input_template_file,dictionary, output_file, line_ending)
+        function [output_file,used_keys,unused_keys] = fill2(input_template_file,dictionary, output_file, line_ending,opts)
             
+            if(~exist('opts','var')),opts=kv_cwn('verbose',0);end;
             
             assert(length(kv_getkeys(dictionary))==length(my_unique(kv_getkeys(dictionary))));
             key_list = kv_getkeys(dictionary);
@@ -92,6 +93,7 @@ classdef Templater
             input_lines = index_cellarray(textscan(in_fid,'%s','delimiter','\n','whitespace',''),1);
             fclose(in_fid);
             templated_lines = cell(size(input_lines));
+            used_keys={};
             for i = 1:size(input_lines,1)
                 
                 templated_line=input_lines{i};
@@ -99,10 +101,23 @@ classdef Templater
                 for j = 1:length(key_list)
                     key = key_list{j};
                     val = kv_get(key,dictionary);
+                    if(~isempty(regexp(templated_line,key, 'once')))
+                        used_keys{end+1}=key;
+                    end
                     templated_line = strrep(templated_line,['$' key],str(val));
                 end
                 
                 templated_lines{i} = templated_line;
+            end
+            
+            
+            try
+                unused_keys=setdiff(key_list,used_keys);
+                if(kvg('verbose',opts))
+                    warning(sprintf('Unused keys: %s\n',concat_cell_string_array(unused_keys,', ',1)));
+                end
+            catch myerr
+                disp(myerr)
             end
 
             out_fid = fopen(output_file, 'w');
