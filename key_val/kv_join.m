@@ -1,4 +1,4 @@
-function [ kv_map_joined ] = kv_join( varargin )
+function kv_map_joined = kv_join( varargin )
 
 
 % in: 2 dictionaries (where each dictionary is a 2-column cell array [first column==string keys, second column==values])
@@ -12,7 +12,14 @@ function [ kv_map_joined ] = kv_join( varargin )
 kv_map_joined = vertcat(varargin{:});
 
 
-if(length(unique(kv_getkeys(kv_map_joined)))<length(kv_getkeys(kv_map_joined)))
+map_keys=kv_getkeys(kv_map_joined);
+if(isnumeric(map_keys{1}))
+    new_map_keys=my_cell2mat(map_keys);
+else
+    new_map_keys=map_keys;
+end
+
+if(length(unique(new_map_keys))<length(new_map_keys))
     error( 'kv_map is no longer consistent' );
 end
     
